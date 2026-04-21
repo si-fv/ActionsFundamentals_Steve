@@ -12,15 +12,15 @@ on:
       current-time:
         description: 'The time when greeting.'
         value: ${{ jobs.reusable-job.outputs.current-time }}
-  jobs:
-  Reusable:
+
+jobs:
+  reusable-job:
     runs-on: ubuntu-latest
     outputs:
       current-time: ${{ steps.time.outputs.time }}
     steps:
       - name: Greet someone
         run: echo "Hello ${{ inputs.who-to-greet }}"
-        
       - name: Set time
         id: time
         run: echo "time=$(date)" >> $GITHUB_OUTPUT
